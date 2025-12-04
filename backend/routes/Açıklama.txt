@@ -1,0 +1,2 @@
+Bu klasör içindeki dosyalar API endpointlerini yönlendirecek.
+Her enpoint için bir yönlendirme dosyası olacak.
