@@ -1,1 +1,0 @@
-Bu klasör içerisindeki controller dosyaları iş mantığını oluşturacak.
