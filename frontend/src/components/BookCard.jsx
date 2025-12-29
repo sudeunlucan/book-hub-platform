@@ -5,7 +5,7 @@ import '../styles/components.css';
 const BookCard = ({ book }) => {
     const navigate = useNavigate();
 
-    const bookImage = book.image ? `/images/books/${book.image}.jpg` : '/images/books/default.jpg';
+    const bookImage = book.image ? `/images/books/${book.image}` : '/images/books/default.jpg';
 
     return (
         <div className="book-card">

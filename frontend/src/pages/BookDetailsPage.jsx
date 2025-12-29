@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Layout from '../layouts/Layout';
 import BookDetailsContainer from '../components/BookDetailsContainer';
@@ -29,6 +28,7 @@ const BookDetailsPage = () => {
 
     return (
         <Layout>
+
             <div className="page-container" style={{ padding: '20px' }}>
                 {loading ? (
                     <div style={{ textAlign: 'center', marginTop: '50px' }}>
@@ -42,6 +42,7 @@ const BookDetailsPage = () => {
                     </div>
                 )}
             </div>
+            
         </Layout>
     );
 };

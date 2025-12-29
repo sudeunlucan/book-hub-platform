@@ -3,9 +3,13 @@ import '../styles/components.css';
 import { addFavorite } from '../services/favoriteService';
 
 const BookDetailsContainer = ({ book }) => {
-    const bookImage = book.image ? `/images/books/${book.image}.jpg` : '/images/books/default.jpg';
-
     if (!book) return <p>Yükleniyor...</p>;
+
+    console.log("BOOK IMAGE DEĞERİ:", book);
+
+    const bookImage = book.image
+        ? `/images/booksdetails/${book.image}`
+        : `/images/booksdetails/default.jpg`;
 
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -25,17 +29,18 @@ const BookDetailsContainer = ({ book }) => {
 
     return (
         <div className="detail-card">
-            <div className="detail-card-left">
-                <img 
-                    src={bookImage} 
-                    alt={book.title} 
-                    className="book-cover"
+            <div className="book-cover-area">
+
+                <img
+                    src={bookImage}
+                    alt={book.title}
                     onError={(e) => {
-                        e.target.src = '/images/books/default.jpg';
+                        e.target.onerror = null;
+                        e.target.src = '/images/booksdetails/default.jpg';
                     }}
                 />
             </div>
-            
+
             <div className="detail-area">
                 <div className="title">
                     <h1>{book.title}</h1>
@@ -49,7 +54,7 @@ const BookDetailsContainer = ({ book }) => {
 
                 <div className="detail-footer">
                     <button className="favorite-button" onClick={clickFavorite}>
-                        Favorilere Ekle
+                        ♥️ Favorilere Ekle
                     </button>
                 </div>
             </div>

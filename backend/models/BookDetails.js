@@ -6,7 +6,7 @@ const getBookDetails = async (bookId) => {
         const request = connectionPool.request();
 
         const detailsQuery = `
-            SELECT book_id, title, author, description, page_count, image category_id 
+            SELECT book_id, title, author, description, page_count, category_id, image 
             FROM books 
             WHERE book_id = @bid
         `;

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../layouts/Layout';
-import BookCard from '../components/BookCard'; 
-import '../styles/profile.css';
+import BookCard from '../components/BookCard';
 import { getFavorites, deleteFavorite } from '../services/favoriteService'; 
+import '../styles/profile.css';
 
 const ProfilePage = () => {
     const navigate = useNavigate();
@@ -26,33 +26,19 @@ const ProfilePage = () => {
 
 
     const logout = () => {
-        if (window.confirm("Çıkış yapmak istediğinize emin misiniz?")) {
-            localStorage.removeItem('user');
-            window.location.href = "/";
-        }
+        localStorage.removeItem('user');
+        window.location.href = "/";
     };
 
     const removeFavorite = async (favId) => {
-        if (window.confirm("Bu kitabı favorilerinizden çıkarmak istediğinize emin misiniz?")) {
-            try {
-                await deleteFavorite(favId);
-                setFavorites(favorites.filter(book => book.fav_id !== favId));
-            } catch (error) {
-                alert("Kitap silinirken bir hata oluştu.");
-                console.error(error);
-            }
+        try {
+            await deleteFavorite(favId);
+            setFavorites(favorites.filter(book => book.fav_id !== favId));
+        } catch (error) {
+            alert("Kitap silinirken bir hata oluştu.");
+            console.error(error);
         }
     };
-
-    if (!user) {
-        return (
-            <Layout>
-                <div className="profile-container">
-                    <h2>Lütfen önce giriş yapın.</h2>
-                </div>
-            </Layout>
-        );
-    }
 
     return (
         <Layout>
@@ -77,15 +63,21 @@ const ProfilePage = () => {
                                         className="remove-fav-button" 
                                         onClick={() => removeFavorite(book.fav_id)}
                                     >
-                                        −
+                                        🗑️
                                     </button>
                                 </div>
                             ))
                         ) : (
-                            <p>Henüz favorilerinize eklenmiş kitap yok.</p>
+                            <p style={{
+                                marginLeft: 16,
+                                color:"#483d43", 
+                                fontStyle: "italic", 
+                                fontWeight: "100", 
+                                fontSize: "16px"}}>
+                                Henüz favorilerinize eklenmiş kitap yok.
+                            </p>
                         )}
                     </div>
-
                 </div>
 
                 <div>

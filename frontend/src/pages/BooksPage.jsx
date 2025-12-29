@@ -37,6 +37,7 @@ const BooksPage = () => {
                     <p>Bu kategoriye ait kitap bulunamadı.</p>
                 )}
             </div>
+
         </Layout>
     );
 };

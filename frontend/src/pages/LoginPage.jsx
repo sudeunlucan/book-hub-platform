@@ -14,13 +14,13 @@ const LoginPage = () => {
         try {
             if (isLogin) {
                 const res = await login({ username: formData.username, password: formData.password });
-                alert("Giriş Başarılı!");
+                //alert("Başarıyla giriş yapıldı!");
                 localStorage.setItem('user', JSON.stringify(res.user));
                 navigate('/');
             } else {
                 if (formData.password !== formData.confirmPassword) return alert("Şifreler eşleşmiyor!");
                 await register(formData);
-                alert("Kayıt Başarılı! Şimdi giriş yapabilirsiniz.");
+                //alert("Başarıyla kayıt yapıldı! Şimdi giriş yapabilirsiniz.");
                 setIsLogin(true);
             }
         } catch (err) {
@@ -30,12 +30,17 @@ const LoginPage = () => {
 
     return (
         <Layout>
+
             <div className="login-container">
+
                 <div style={{marginRight: 160}}>
                     <img src="/images/bookhub.jpg" alt="resim" />
                 </div>
+
                 <div className="login-box">
+
                     <h2 style={{color: "white"}}>{isLogin ? "Giriş Yap" : "Üye Ol"} </h2>
+
                     <form onSubmit={handleSubmit}>
                         <input 
                             style={{color: "#483d43"}}
@@ -43,11 +48,11 @@ const LoginPage = () => {
                             onChange={(e) => setFormData({...formData, username: e.target.value})} 
                         />
                         {!isLogin && (
-                            <input 
-                                style={{color: "#483d43"}}
-                                type="email" placeholder="E-posta" required 
-                                onChange={(e) => setFormData({...formData, email: e.target.value})} 
-                            />
+                        <input 
+                            style={{color: "#483d43"}}
+                            type="email" placeholder="E-posta" required 
+                            onChange={(e) => setFormData({...formData, email: e.target.value})} 
+                        />
                         )}
                         <input 
                             style={{color: "#483d43"}}
@@ -61,16 +66,22 @@ const LoginPage = () => {
                                 onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})} 
                             />
                         )}
+
                         <button type="submit" className="login-area-button" style={{fontWeight: 'bold'}}>
                             {isLogin ? "Giriş Yap" : "Kayıt Ol"}
                         </button>
+
                     </form>
+
                     <p 
                         onClick={() => setIsLogin(!isLogin)} className="toggle-text">
                         {isLogin ? "Hesabınız yok mu? Üye Olun" : "Zaten hesabınız var mı? Giriş Yapın"}
                     </p>
+
                 </div>
+                
             </div>
+
         </Layout>
     );
 };

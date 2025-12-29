@@ -32,16 +32,6 @@ const HomePage = () => {
         loadData();
     }, []);
 
-    if (error) {
-        return (
-            <Layout>
-                <div style={{ color: 'red', textAlign: 'center', padding: '50px' }}>
-                    Sayfa yüklenirken hata oluştu: {error}
-                </div>
-            </Layout>
-        );
-    }
-
     return (
         <Layout>
             <div>
@@ -52,7 +42,7 @@ const HomePage = () => {
                             color:"#483d43", 
                             fontStyle: "italic", 
                             fontWeight: "100", 
-                            fontSize: "24px"
+                            fontSize: "22px"
                             }}>Bir sonraki keşfin, sıradaki kitabın.</h2>
 
                 <div className="category-grid">

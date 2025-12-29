@@ -20,7 +20,7 @@ const getUserFavorites = async (userId) => {
         const result = await connectionPool.request()
             .input('userId', sql.Int, userId)
             .query(`
-                SELECT f.fav_id, b.book_id, b.title, b.author 
+                SELECT f.fav_id, b.book_id, b.title, b.author, b.image 
                 FROM favorites f
                 JOIN books b ON f.book_id = b.book_id
                 WHERE f.user_id = @userId
